@@ -11,10 +11,6 @@ export default function MyRouter() {
 
     return (
         <div>
-            {/* <div> <Link to="/Form">Form</Link></div>
-            <div> <Link to="/ChildForm">ChildForm</Link></div>
-            <div> <Link to="/Instructions">Instructions</Link></div> */}
-
             <Routes>
                 <Route path='/' element={<UserContext><Home /></UserContext>} />
                 <Route path='/Home' element={<UserContext><Home /></UserContext>} />
