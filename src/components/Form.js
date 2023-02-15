@@ -264,5 +264,5 @@ export default function Form() {
 
             {isFinished && <div><Button color="primary" variant="outlined" onClick={() => { exportToCsv(); setTimeout(() => { setIsFinished(false) }, 1000) }}>downLoad your details</Button></div>}
         </div>
-    );
+    ); 
 }
