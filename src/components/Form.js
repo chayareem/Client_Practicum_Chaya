@@ -4,7 +4,6 @@ import ChildForm from './ChildForm';
 import React, { useContext } from 'react'
 import { userContext } from './UserContext';
 import { useNavigate } from 'react-router-dom';
-// import { InputText } from 'primereact/inputtext';
 import axios from 'axios';
 import { Button, TextField, InputLabel, MenuItem, Select, FormLabel, RadioGroup, FormControlLabel, Radio } from '@material-ui/core';
 
@@ -14,7 +13,6 @@ export default function Form() {
     const [children, setChildren] = useState();
     const [hasChildrten, setHasChildrten] = useState();
     const [isFinished, setIsFinished] = useState();
-    const [showError, setShowError] = useState(false);
     const myContext = useContext(userContext);
     const navigate = useNavigate();
 
@@ -34,13 +32,9 @@ export default function Form() {
         })
 
         if (flag) {
-            console.log(`!!!!!!!!!!! ${JSON.stringify(myContext.userState)}`)
+            console.log(`${JSON.stringify(myContext.userState)}`)
             axios.post('https://localhost:44358/api/User', myContext.userState).then(
                 res => {
-                    console.log(res.data)
-                    console.log(res.data.id)
-
-                    console.log('tz parent enter')
                     console.log(res.data)
                     console.log(res.data.id)
                     var c = myContext.childArr;
@@ -51,10 +45,9 @@ export default function Form() {
                     var a = myContext.childArr;
                     console.log(a.length)
                     console.log(myContext.childArr.length)
-
                     for (let index = 0; index < a.length; index++) {
                         debugger;
-                        console.log(a[index], 'wwww')
+                        console.log(a[index])
                         axios.post('https://localhost:44358/api/Child', a[index]).then(
                             data => {
                                 console.log(`saved successfully with data ${data}`)
@@ -110,7 +103,7 @@ export default function Form() {
         CsvString = "data:application/csv," + encodeURIComponent(CsvString);
         var anchor = document.createElement("A");
         anchor.setAttribute("href", CsvString);
-        anchor.setAttribute("download", myContext.userState.FirstName);
+        anchor.setAttribute("download", `${myContext.userState.FirstName}.csv`);
         document.body.append(anchor);
         anchor.click();
     }
