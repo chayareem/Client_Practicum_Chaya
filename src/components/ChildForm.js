@@ -4,18 +4,9 @@ import { useForm } from 'react-hook-form';
 import { userContext } from './UserContext';
 import { Button, TextField, InputLabel, MenuItem, Select } from '@material-ui/core';
 
-
-
-
 export default function ChildForm(props) {
-    const [child, setChild] = useState({});
     const myContext = useContext(userContext);
-    const [childID, setChildID] = useState();
-    const [childName, setChildName] = useState();
-    const [childDate, setChildDate] = useState();
-
-
-
+    
     const {
         register,
         formState: { errors },
